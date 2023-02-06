@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -14,32 +13,20 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::prefix('/')->group(function(){
-    Route::fallback(function (){
-        return view('error_page');
-    });
-});
 
 Route::get('/', function () {
-<<<<<<< Updated upstream
-    return view('admin.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
-=======
-    return view('frontend.welcome');
+
+    return view('frontend.pages.index');
 });
->>>>>>> Stashed changes
 
 Route::get('/dashboard', function () {
-    return view('layouts.app');
+    return view('admin.index');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
-// Admin routes
-Route::controller(AdminController::class)->group(function (){
-   Route::get('/admin/profile', 'profile')->name('admin.profile');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 require __DIR__.'/auth.php';
-require __DIR__ . '/admin.php';
-
