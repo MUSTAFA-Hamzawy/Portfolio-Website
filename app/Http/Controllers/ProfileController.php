@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\MyHelpers;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -27,6 +29,13 @@ class ProfileController extends Controller
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
         $request->user()->fill($request->validated());
+
+
+        // moving the image to the uploads directory
+        if ($request->file('image')){
+            $imgName = $this->uploadImage($request->file('image'));
+            $request->user()->image = $imgName;
+        }
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
@@ -56,5 +65,13 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    /**
+     * @param UploadedFile $image
+     * @return string
+     */
+    private function uploadImage(UploadedFile $image): string{
+        return MyHelpers::uploadFile($image, public_path('uploads/images/admin_profile'));
     }
 }
