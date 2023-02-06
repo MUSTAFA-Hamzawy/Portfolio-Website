@@ -1,35 +1,58 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+@php
+    $needsAjax = true;
+    $float = LaravelLocalization::getCurrentLocaleDirection() == 'rtl' ? 'left' : 'right';
+@endphp
+    <!DOCTYPE html>
+<html lang="en" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <title>@yield('PageTitle')</title>
+    @include('Includes.css')
+    <style>
+        div.dataTables_wrapper div.dataTables_filter {
+            text-align: {{$float}};
+        }
+        .float-sm-right{
+            float: {{$float}} !important;
+        }
+    </style>
+    @yield('css')
+</head>
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+    @include('Includes.preloader')
+    @include('Includes.navbar')
+    @include('Includes.sidebar')
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
-            @include('layouts.navigation')
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        @include('Includes.header')
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+                @yield('content')
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
-    </body>
+    @include('Includes.footer')
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+@yield('AjaxScript')
+@include('Includes.js')
+@yield('js')
+</body>
 </html>
