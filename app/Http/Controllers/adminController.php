@@ -34,7 +34,7 @@ class adminController extends Controller
 
         // moving the image to the uploads directory
         if ($request->file('image')){
-            $imgName = $this->uploadImage($request->file('image'));
+            $imgName = MyHelpers::uploadImage($request->file('image'), 'uploads/images/admin_profile');
             $data->image = $imgName;
         }
 

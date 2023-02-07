@@ -31,8 +31,8 @@
                 <label for="exampleInputFile">Image</label>
                 <div class="input-group">
                     <div class="custom-file">
-                        <input name="image" type="file" class="custom-file-input" id="exampleInputFile">
-                        <label class="custom-file-label" for="exampleInputFile">Choose image</label>
+                        <input name="image" type="file" class="custom-file-input" id="profile_image">
+                        <label class="custom-file-label" for="profile_image">Choose image</label>
                     </div>
                     <div class="input-group-append">
                         <span class="input-group-text">Upload</span>
@@ -41,7 +41,8 @@
                 <small style="color: #e20000" class="error" id="image-error"></small>
             </div>
             <div class="form-group" style="max-width: 150px">
-                <img class="img-fluid mb-3" src="{{!empty($authData->image) ? url('uploads/images/admin_profile/' .
+                <img id="show_image" class="img-fluid mb-3" src="{{!empty($authData->image) ? url
+                ('uploads/images/admin_profile/' .
                 $authData->image) : url
                 ('uploads/images/no_image.jpg')
                 }}" alt="Photo" style="width:
@@ -188,6 +189,21 @@
             });
         });
 
+    </script>
+@endsection
+
+@section('js')
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            $('#profile_image').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#show_image').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
     </script>
 @endsection
 
