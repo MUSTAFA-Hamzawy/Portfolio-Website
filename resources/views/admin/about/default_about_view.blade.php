@@ -1,7 +1,7 @@
 
 @extends('layouts.app')
 
-@section('PageTitle', 'Home Banner')
+@section('PageTitle', 'About')
 
 @section('content')
     <!-- Content Header (Page header) -->
@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Home Banner</h1>
+                    <h1>About Info</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -29,41 +29,39 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form id="home_banner_form" action="{{route('home-banner-update')}}"
+                        <form id="about_form" action="{{route('about-update')}}"
                               method="post"
-                               enctype="multipart/form-data">
+                              enctype="multipart/form-data">
                             @csrf
-                            <input type="text" value="{{$data->id}}" name="id" hidden/>
+                            <input type="text" value="{{$data? $data->id : 0}}" name="id" hidden/>
                             <div class="form-group">
-                                <label for="inputName">Title</label>
-                                <input name="title" type="text" id="inputName" class="form-control"
-                                       value="{{$data->title}}">
+                                <label for="title">Title</label>
+                                <input name="title" type="text" id="title" class="form-control"
+                                       value="{{$data? $data->title : 0}}">
                                 <small style="color: #e20000" class="error" id="title-error"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="subtitle">Sub Title</label>
+                                <input name="sub_title" type="text" id="subtitle" class="form-control"
+                                       value="{{$data->sub_title}}">
+                                <small style="color: #e20000" class="error" id="sub_title-error"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputDescription">Description</label>
+                                <textarea name="about_description" id="inputDescription" class="form-control"
+                                          rows="4">{{$data->description}}</textarea>
+                                <small style="color: #e20000" class="error" id="about_description-error"></small>
 
                             </div>
                             <div class="form-group">
-                                <label for="inputDescription">Bio Description</label>
-                                <textarea name="bio_description" id="inputDescription" class="form-control"
-                                          rows="4">{{$data->bio_description}}</textarea>
-                                <small style="color: #e20000" class="error" id="bio_description-error"></small>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="inputDescription">Video URL</label><br>
-                                <input name="video_url" type="text" id="inputName" class="form-control"
-                                       value="{{$data->video_url}}">
-                                <small style="color: #e20000" class="error" id="video_url-error"></small>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="banner_image">Image</label>
+                                <label for="about_image">Image</label>
                                 <div class="input-group">
                                     <div class="custom-file">
-                                        <input name="banner_image" type="file" class="custom-file-input"
-                                                id="banner_image" >
-                                        <small style="color: #e20000" class="error" id="banner_image-error"></small>
+                                        <input name="about_image" type="file" class="custom-file-input"
+                                               id="about_image" >
+                                        <small style="color: #e20000" class="error" id="about_image-error"></small>
 
-                                        <label class="custom-file-label" for="exampleInputFile">Choose image</label>
+                                        <label class="custom-file-label" for="about_image">Choose image</label>
 
                                     </div>
                                     <div class="input-group-append">
@@ -74,9 +72,9 @@
                             </div>
                             <div class="form-group" style="max-width: 150px">
                                 <small style="color: #e20000" class="error" id="image-error"></small>
-                                <img id="show_image" class="img-fluid mb-3" src="{{ !empty($data->banner_image) ? url
-                                ("uploads/images/home_banner/" . $data->banner_image):url
-                                ("uploads/images/home_banner/about_no_img.png")
+                                <img id="show_image" class="img-fluid mb-3" src="{{ !empty($data->about_image) ? url
+                                ("uploads/images/about/" . $data->about_image):url
+                                ("uploads/images/no_image.jpg")
                                 }}" alt="Photo"
                                      style="width:100%">
                             </div>
@@ -100,17 +98,17 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-            $('#home_banner_form').on('submit', function(event){
+            $('#about_form').on('submit', function(event){
                 event.preventDefault();
                 // remove errors if the conditions are true
-                $('#home_banner_form *').filter(':input.is-invalid').each(function(){
+                $('#about_form *').filter(':input.is-invalid').each(function(){
                     this.classList.remove('is-invalid');
                 });
-                $('#home_banner_form *').filter('.error').each(function(){
+                $('#about_form *').filter('.error').each(function(){
                     this.innerHTML = '';
                 });
                 $.ajax({
-                    url: "{{route('home-banner-update')}}",
+                    url: "{{route('about-update')}}",
                     method: 'POST',
                     data: new FormData(this),
                     dataType: 'JSON',
@@ -120,10 +118,10 @@
                     success : function(response)
                     {
                         // remove errors if the conditions are true
-                        $('#home_banner_form *').filter(':input.is-invalid').each(function(){
+                        $('#about_form *').filter(':input.is-invalid').each(function(){
                             this.classList.remove('is-invalid');
                         });
-                        $('#home_banner_form *').filter('.error').each(function(){
+                        $('#about_form *').filter('.error').each(function(){
                             this.innerHTML = '';
                         });
                         Swal.fire({
@@ -154,7 +152,7 @@
     <script type="text/javascript">
 
         $(document).ready(function(){
-            $('#banner_image').change(function(e){
+            $('#about_image').change(function(e){
                 var reader = new FileReader();
                 reader.onload = function(e){
                     $('#show_image').attr('src',e.target.result);

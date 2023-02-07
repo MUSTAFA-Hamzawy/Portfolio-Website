@@ -36,7 +36,7 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu-open">
+                <li class="nav-item menu">
                     <a class="nav-link active">
                         <i class="nav-icon fas fa-copyright"></i>
                         <p>
@@ -55,6 +55,28 @@
                 </li>
 
             </ul>
+
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item menu">
+                    <a class="nav-link active">
+                        <i class="nav-icon fas fa-copyright"></i>
+                        <p>
+                            About Info
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('about-show')}}" class="nav-link ">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Edit</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>
