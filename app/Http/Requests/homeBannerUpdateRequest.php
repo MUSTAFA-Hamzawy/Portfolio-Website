@@ -29,7 +29,7 @@ class homeBannerUpdateRequest extends FormRequest
             'title' => ['required', 'string', 'max:150'],
             'bio_description' => ['required', 'string'],
             'video_url' => ['required', 'url'],
-            'banner_image' => [ 'image', 'mimes:' . $allowedExtensions],
+            'banner_image' => [ 'image', 'mimes:' . $allowedExtensions]
         ];
     }
 }
