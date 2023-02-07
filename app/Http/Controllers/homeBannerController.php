@@ -18,7 +18,7 @@ class homeBannerController extends Controller
     public function homeBannerShow(){
 
         try {
-            $data = homeBannerModel::findOrFail(1);
+            $data = homeBannerModel::all()->first();
             return view('admin.home_banner.default_view', compact('data'));
         }catch (ModelNotFoundException $exp){
             toastr()->error('Sorry, We did not find any data.');
@@ -57,7 +57,7 @@ class homeBannerController extends Controller
             return response(['msg' =>'Updated Successfully.'], 200);
         } catch (ModelNotFoundException $exp){
             toastr()->error('Failed to update.');
-            return redirect()->route('show-home-banner');
+            return redirect()->back();
         }
 
 

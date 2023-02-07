@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class homeBannerUpdateRequest extends FormRequest
+class aboutRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,13 +23,13 @@ class homeBannerUpdateRequest extends FormRequest
      */
     public function rules()
     {
-        $allowedExtensions = 'jpg,png,webp,jpeg,gif';
+            $allowedExtensions = 'jpg,png,webp,jpeg,gif';
         return [
             'id' => [],
             'title' => ['required', 'string', 'max:150'],
-            'bio_description' => ['required', 'string'],
-            'video_url' => ['required', 'url'],
-            'banner_image' => [ 'image', 'mimes:' . $allowedExtensions]
+            'about_description' => ['required', 'string', 'max:255'],
+            'sub_title' => ['required', 'string'],
+            'about_image' => [ 'image', 'mimes:' . $allowedExtensions, 'max:4096']
         ];
     }
 }
