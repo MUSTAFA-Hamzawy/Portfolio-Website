@@ -21,12 +21,16 @@ class MyHelpers
      * @param string $path
      * @return void
      */
-    public static function uploadFile(UploadedFile $file, string $path){
+    public static function uploadFile( $file, string $path){
         // encrypt the file name
         $extension = $file->getClientOriginalExtension();
         $encryptedName = self::encryptFileName($file->getClientOriginalName() . time());
         $fileName = $encryptedName . '.' . $extension;
         $file->move($path, $fileName);
         return $fileName;
+    }
+
+    public static function uploadImage($image, string $relativePath): string{
+        return MyHelpers::uploadFile($image, public_path($relativePath));
     }
 }
