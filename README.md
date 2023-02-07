@@ -1,5 +1,5 @@
 
-composer install
-npm install
-npm run dev
-php migrate
+composer install <br>
+npm install <br>
+npm run dev <br>
+php migrate <br>
