@@ -3,6 +3,16 @@
 
 @section('PageTitle', 'About')
 
+@section('css')
+    <!-- summernote -->
+    <link rel="stylesheet" href="{{asset('backend/assets')}}/plugins/summernote/summernote-bs4.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="{{asset('backend/assets')}}/plugins/codemirror/codemirror.css">
+    <link rel="stylesheet" href="{{asset('backend/assets')}}/plugins/codemirror/theme/monokai.css">
+    <!-- SimpleMDE -->
+    <link rel="stylesheet" href="{{asset('backend/assets')}}/plugins/simplemde/simplemde.min.css">
+@endsection
+
 @section('content')
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -53,6 +63,15 @@
                                 <small style="color: #e20000" class="error" id="about_description-error"></small>
 
                             </div>
+
+                            <div class="form-group">
+                                <label for="summernote">Long Description</label>
+                                <textarea rows="4" name="long_description" id="summernote" style="display: none;">
+                                    {{ $data->long_description}}
+                                </textarea>
+                                <small style="color: #e20000" class="error" id="long_description-error"></small>
+                            </div>
+
                             <div class="form-group">
                                 <label for="about_image">Image</label>
                                 <div class="input-group">
@@ -160,5 +179,16 @@
                 reader.readAsDataURL(e.target.files['0']);
             });
         });
+    </script>
+    <!-- Summernote -->
+    <script src="{{asset('backend/assets')}}/plugins/summernote/summernote-bs4.min.js"></script>
+
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            // Summernote
+            $('#summernote').summernote()
+
+        })
     </script>
 @endsection
