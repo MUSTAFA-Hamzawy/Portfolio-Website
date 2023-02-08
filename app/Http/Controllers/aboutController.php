@@ -31,11 +31,11 @@ class aboutController extends Controller
 
         // update
         try {
-
             $updatedData = [
                 'title' => $data['title'],
                 'sub_title' => $data['sub_title'],
-                'description' => $data['about_description']
+                'description' => $data['about_description'],
+                'long_description' => $data['long_description']
             ];
             $requestHasImage ? $updatedData['about_image'] = $data['about_image'] : null;
 
