@@ -28,6 +28,7 @@ class aboutRequest extends FormRequest
             'id' => [],
             'title' => ['required', 'string', 'max:150'],
             'about_description' => ['required', 'string', 'max:255'],
+            'long_description' => ['required', 'string'],
             'sub_title' => ['required', 'string'],
             'about_image' => [ 'image', 'mimes:' . $allowedExtensions, 'max:4096']
         ];
