@@ -54,8 +54,8 @@
                                     <li><a href="services-details.html">Services</a></li>
                                     <li class="active menu-item-has-children"><a href="#">Portfolio</a>
                                         <ul class="sub-menu">
-                                            <li class="active"><a href="portfolio.html">Portfolio</a></li>
-                                            <li><a href="portfolio-details.html">Portfolio Details</a></li>
+                                            <li><a href="portfolio.html">Portfolio</a></li>
+                                            <li class="active"><a href="portfolio-details.html">Portfolio Details</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item-has-children"><a href="#">Our Blog</a>
@@ -112,11 +112,11 @@
             <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-8 col-md-10">
                     <div class="breadcrumb__wrap__content">
-                        <h2 class="title">Case Study</h2>
+                        <h2 class="title">Case Details</h2>
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
+                                <li class="breadcrumb-item active" aria-current="page">Details</li>
                             </ol>
                         </nav>
                     </div>
@@ -136,117 +136,94 @@
     </section>
     <!-- breadcrumb-area-end -->
 
-    <!-- portfolio-area -->
-    <section class="portfolio__inner">
+    <!-- portfolio-details-area -->
+    <section class="services__details">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <div class="portfolio__inner__nav">
-                        <button class="active" data-filter="*">all</button>
-                        <button data-filter=".cat-one">mobile apps</button>
-                        <button data-filter=".cat-two">website Design</button>
-                        <button data-filter=".cat-three">ui/kit</button>
-                        <button data-filter=".cat-four">Landing page</button>
+                <div class="col-lg-8">
+                    <div class="services__details__thumb">
+                        <img src="assets/img/images/services_details01.jpg" alt="">
+                    </div>
+                    <div class="services__details__content">
+                        <h2 class="title">Rixelda - 24 hours Control room landing page</h2>
+                        <p>Definition: Business strategy can be understood as the course of action or set of decisions which assist the
+                            entrepreneurs in achieving specific business objectives.</p>
+                        <p>It is nothing but a master plan that the management of a company implements to secure a competitive position in the market, carry on its operations, please customers and achieve the desired ends of the business.</p>
+                        <p>In business, it is the long-range sketch of the desired image, direction and destination of the organization. It is a scheme of corporate intent and action, which is carefully planned and flexibly designed with the purpose of</p>
+                        <ul class="services__details__list">
+                            <li>Achieving effectiveness,</li>
+                            <li>Perceiving and utilizing opportunities,</li>
+                            <li>Mobilising resources,</li>
+                            <li>Securing an advantageous position,</li>
+                            <li>Meeting challenges and threats,</li>
+                            <li>Directing efforts and behaviour and</li>
+                            <li>Gaining command over the situation.</li>
+                        </ul>
+                        <p>A business strategy is a set of competitive moves and actions that a business uses to attract customers, compete
+                            successfully, strengthening performance, and achieve organizational goals. It outlines how business should be carried
+                            out to reach the desired ends</p>
+                        <div class="services__details__img">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <img src="assets/img/images/services_details02.jpg" alt="">
+                                </div>
+                                <div class="col-sm-6">
+                                    <img src="assets/img/images/services_details03.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <h2 class="small-title">Nature of Business Strategy</h2>
+                        <p>A business strategy is a combination of proactive actions on the part of management, for the purpose of enhancing the company’s market position and overall performance and reactions to unexpected developments and new market.</p>
+                        <p>The maximum part of the company’s present strategy is a result of formerly initiated actions and business approaches, but when market conditions take an unanticipated turn, the company requires a strategic reaction to cope with contingencies. Hence, for unforeseen development, a part of the business strategy is formulated as a reasoned response nature of business strategy.</p>
                     </div>
                 </div>
-            </div>
-            <div class="portfolio__inner__active">
-                <div class="portfolio__inner__item grid-item cat-two cat-three">
-                    <div class="row gx-0 align-items-center">
-                        <div class="col-lg-6 col-md-10">
-                            <div class="portfolio__inner__thumb">
-                                <a href="portfolio-details.html">
-                                    <img src="assets/img/portfolio/portfolio__img01.jpg" alt="">
-                                </a>
-                            </div>
+                <div class="col-lg-4">
+                    <aside class="services__sidebar">
+                        <div class="widget">
+                            <h5 class="title">Get in Touch</h5>
+                            <form action="#" class="sidebar__contact">
+                                <input type="text" placeholder="Enter name*">
+                                <input type="email" placeholder="Enter your mail*">
+                                <textarea name="message" id="message" placeholder="Massage*"></textarea>
+                                <button type="submit" class="btn">send massage</button>
+                            </form>
                         </div>
-                        <div class="col-lg-6 col-md-10">
-                            <div class="portfolio__inner__content">
-                                <h2 class="title"><a href="portfolio-details.html">Ecommerce Product Apps</a></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                    hidden in the middle of text</p>
-                                <a href="portfolio-details.html" class="link">View Case Study</a>
-                            </div>
+                        <div class="widget">
+                            <h5 class="title">Project Information</h5>
+                            <ul class="sidebar__contact__info">
+                                <li><span>Date :</span> January, 2021</li>
+                                <li><span>Location :</span> East Meadow NY 11554</li>
+                                <li><span>Client :</span> American</li>
+                                <li class="cagegory"><span>Category :</span>
+                                    <a href="portfolio.html">Photo,</a>
+                                    <a href="portfolio.html">UI/UX</a>
+                                </li>
+                                <li><span>Project Link :</span> <a href="portfolio-details.html">https://www.yournews.com/</a></li>
+                            </ul>
                         </div>
-                    </div>
+                        <div class="widget">
+                            <h5 class="title">Contact Information</h5>
+                            <ul class="sidebar__contact__info">
+                                <li><span>Address :</span> 8638 Amarica Stranfod, <br> Mailbon Star</li>
+                                <li><span>Mail :</span> yourmail@gmail.com</li>
+                                <li><span>Phone :</span> +7464 0187 3535 645</li>
+                                <li><span>Fax id :</span> +9 659459 49594</li>
+                            </ul>
+                            <ul class="sidebar__contact__social">
+                                <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                                <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                                <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest"></i></a></li>
+                                <li><a href="#"><i class="fab fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                            </ul>
+                        </div>
+                    </aside>
                 </div>
-                <div class="portfolio__inner__item grid-item cat-one cat-three cat-four">
-                    <div class="row gx-0 align-items-center">
-                        <div class="col-lg-6 col-md-10">
-                            <div class="portfolio__inner__thumb">
-                                <a href="portfolio-details.html">
-                                    <img src="assets/img/portfolio/portfolio__img02.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-10">
-                            <div class="portfolio__inner__content">
-                                <h2 class="title"><a href="portfolio-details.html">Cryptocurrency web Application</a></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                    hidden in the middle of text</p>
-                                <a href="portfolio-details.html" class="link">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio__inner__item grid-item cat-one cat-four">
-                    <div class="row gx-0 align-items-center">
-                        <div class="col-lg-6 col-md-10">
-                            <div class="portfolio__inner__thumb">
-                                <a href="portfolio-details.html">
-                                    <img src="assets/img/portfolio/portfolio__img03.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-10">
-                            <div class="portfolio__inner__content">
-                                <h2 class="title"><a href="portfolio-details.html">Making 3d Illustration</a></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                    hidden in the middle of text</p>
-                                <a href="portfolio-details.html" class="link">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio__inner__item grid-item cat-two">
-                    <div class="row gx-0 align-items-center">
-                        <div class="col-lg-6 col-md-10">
-                            <div class="portfolio__inner__thumb">
-                                <a href="portfolio-details.html">
-                                    <img src="assets/img/portfolio/portfolio__img04.jpg" alt="">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-10">
-                            <div class="portfolio__inner__content">
-                                <h2 class="title"><a href="portfolio-details.html">Hilon - Personal Portfolio</a></h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
-                                <p>If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing
-                                    hidden in the middle of text</p>
-                                <a href="portfolio-details.html" class="link">View Case Study</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pagination-wrap">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                        <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-left"></i></a></li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#"><i class="far fa-long-arrow-right"></i></a></li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </section>
-    <!-- portfolio-area-end -->
+    <!-- portfolio-details-area-end -->
 
 
     <!-- contact-area -->
