@@ -23,7 +23,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->controller(portfolioCo
 // front-end routes
 Route::controller(portfolioController::class)->group(function (){
     Route::view('/portfolio', 'frontend.pages.portfolio.portfolio',
-        ['data' => portfolioModel::all()->random(6),
+        ['data' => portfolioModel::all(),
         'categories' => DB::table('portfolio_category')->get()
         ])
         ->name('portfolio-full-page');

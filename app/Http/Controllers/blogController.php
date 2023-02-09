@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\DB;
 
 class blogController extends Controller
 {
+    /**
+     * @param blogCategoryRequest $request
+     * @return Response
+     */
     public function blogCategoryCreate(blogCategoryRequest $request){
         $data = $request->validated();
 
@@ -24,6 +28,10 @@ class blogController extends Controller
         return response(['msg' => 'Created.'], 200);
     }
 
+    /**
+     * @param blogRequest $request
+     * @return Response
+     */
     public function blogCreate(blogRequest $request){
         $data = $request->validated();
 
@@ -57,6 +65,10 @@ class blogController extends Controller
         return redirect()->route('blog-add');
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function blogRemove(Request $request){
         try {
             $blog = blogModel::findOrFail($request->get('id'));
@@ -68,6 +80,10 @@ class blogController extends Controller
         }
     }
 
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
     public function blogEdit($id){
         try {
             $data = blogModel::findOrFail($id);
@@ -78,8 +94,10 @@ class blogController extends Controller
         }
     }
 
-
-
+    /**
+     * @param blogRequest $request
+     * @return Response
+     */
     public function blogUpdate(blogRequest $request){
         $data = $request->validated();
         $requestHasImage = $request->file('image');
@@ -121,6 +139,10 @@ class blogController extends Controller
     }
 
 
+    /**
+     * @param string $image
+     * @return void
+     */
     private function deleteImageFromStorage(string $image){
         // delete image from the uploaded images file
         $image = public_path('uploads/images/blog/') . $image;

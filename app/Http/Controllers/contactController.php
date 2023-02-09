@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class contactController extends Controller
 {
+    /**
+     * @param contactRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function contactCreate(contactRequest $request){
         $data = $request->validated();
 
@@ -29,6 +33,11 @@ class contactController extends Controller
         toastr()->error('Failed to add this project, try again.');
         return redirect()->route('contact');
     }
+
+    /**
+     * @param Request $request
+     * @return Response|void
+     */
     public function contactRemove(Request $request){
         try {
             $contact = contactModel::findOrFail($request->get('id'));
