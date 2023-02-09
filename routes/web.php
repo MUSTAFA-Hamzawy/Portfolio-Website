@@ -34,3 +34,5 @@ require __DIR__.'/admin.php';
 require __DIR__.'/home_banner.php';
 require __DIR__.'/about.php';
 require __DIR__.'/portfolio.php';
+require __DIR__.'/blog.php';
+require __DIR__.'/contact.php';
