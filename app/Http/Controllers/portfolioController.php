@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\DB;
 class portfolioController extends Controller
 {
 
+    /**
+     * @param addPortfolioRequest $request
+     * @return  Response
+     */
     public function portfolioCreate(addPortfolioRequest $request){
         $data = $request->validated();
         $imgName = MyHelpers::uploadImage($request->file('image'), 'uploads/images/portfolio');
@@ -49,6 +53,10 @@ class portfolioController extends Controller
         }
     }
 
+    /**
+     * @param Request $request
+     * @return  Response
+     */
     public function portfolioRemove(Request $request){
         try {
             $portfolio = portfolioModel::findOrFail($request->get('id'));
@@ -61,6 +69,10 @@ class portfolioController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @return RedirectResponse
+     */
     public function portfolioEdit($id){
         try {
             $data = portfolioModel::findOrFail($id);
@@ -72,6 +84,10 @@ class portfolioController extends Controller
     }
 
 
+    /**
+     * @param addPortfolioRequest $request
+     * @return  Response
+     */
     public function portfolioUpdate(addPortfolioRequest $request){
         $data = $request->validated();
         $requestHasImage = $request->file('image');

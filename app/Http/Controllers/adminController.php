@@ -21,11 +21,19 @@ class adminController extends Controller
         return MyHelpers::uploadFile($image, public_path('uploads/images/admin_profile'));
     }
 
+    /**
+     * @return User
+     */
     private function getAuthData() : User{
         $authId = Auth::user()->id;
         $authData = User::find($authId);
         return $authData;
     }
+
+    /**
+     * @param profileUpdateRequest $request
+     * @return Response
+     */
     public function profileUpdate(profileUpdateRequest $request){
         $request->validated();
         $data = $this->getAuthData();
@@ -42,6 +50,11 @@ class adminController extends Controller
 
         return response(['msg' => 'Profile is Updated Successfully'], 200);
     }
+
+    /**
+     * @param passwordUpdateRequest $request
+     * @return Response
+     */
     public function passwordUpdate(passwordUpdateRequest $request){
         $data = $request->validated();
 

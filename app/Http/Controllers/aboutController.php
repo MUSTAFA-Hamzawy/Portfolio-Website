@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 
 class aboutController extends Controller
 {
+    /**
+     * @return RedirectResponse
+     */
     public function aboutShow(){
         try {
             $data = aboutModel::all()->first();
@@ -20,6 +23,10 @@ class aboutController extends Controller
         }
     }
 
+    /**
+     * @param aboutRequest $request
+     * @return Response
+     */
     public function aboutUpdate(aboutRequest $request){
         $data = $request->validated();
 
