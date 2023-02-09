@@ -1,0 +1,130 @@
+@extends('layouts.app')
+
+@section('css')
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{asset('backend/assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css')}}">
+
+@endsection
+
+@section('PageTitle', 'Contact Us')
+
+@section('content')
+    <div class="card card-success">
+        <div class="card-header">
+            <h3 class="card-title">Contact messages</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            @if(count($data) > 0)
+                <br/><br/>
+                <table id="example1" class="table table-bordered table-striped" >
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Subject</th>
+                        <th>Message</th>
+                        <th>Address</th>
+                        <th>Delete ?</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($data as $key => $item)
+                        <tr class="row-id-{{$item->id}}">
+                            <td style="width: 20px">{{$loop->index + 1}}</td>
+                            <td>{{$item->sender_name}}</td>
+                            <td>{{$item->sender_email}}</td>
+                            <td>{{$item->subject}}</td>
+                            <td>{{$item->message}}</td>
+                            <td>{{$item->address}}</td>
+                            <td style="width: 150px">
+
+                                <button id="delete-button" title="Delete" class="btn bg-danger mr-1 delete-button"
+                                        data-id="{{$item->id}}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            @else
+                <h2>No Messages !</h2>
+            @endif
+        </div>
+        <!-- /.card-body -->
+
+    </div>
+    <!-- /.card -->
+
+@endsection
+
+@section('AjaxScript')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.delete-button').click( function(event){
+                event.preventDefault();
+                if(confirm('Are you sure ?'))
+                {
+                    let id = $(this).data('id');
+                    $.ajax({
+                        type: 'post',
+                        url: '{{route('contact-remove')}}',
+                        data:{
+                            '_token': '{{csrf_token()}}',
+                            'id' : id,
+                        },
+                        success : function(response)
+                        {
+                            Swal.fire({
+                                icon: 'success',
+                                title: response.msg,
+                                showDenyButton: false,
+                                showCancelButton: false,
+                            }).then((result) => {
+                                $('.row-id-'+id).remove();
+                            });
+                        },
+                        error: function(response) {
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+@endsection
+
+@section('js')
+    <!-- DataTables -->
+    <script src="{{asset('backend/assets/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/jszip/jszip.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/pdfmake/pdfmake.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/pdfmake/vfs_fonts.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+    <script src="{{asset('backend/assets/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        });
+    </script>
+
+
+@endsection

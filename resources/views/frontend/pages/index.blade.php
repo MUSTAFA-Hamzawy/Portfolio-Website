@@ -23,7 +23,7 @@
     <!-- work-process-area-end -->
 
     <!-- portfolio-area -->
-    @include('frontend.pages.portfolio_home')
+    @include('frontend.pages.portfolio.portfolio_home')
     <!-- portfolio-area-end -->
 
     <!-- partner-area -->
@@ -35,7 +35,7 @@
     <!-- testimonial-area-end -->
 
     <!-- blog-area -->
-    @include('frontend.pages.blog')
+    @include('frontend.pages.blog.blog_home')
     <!-- blog-area-end -->
 
     <!-- contact-area -->
