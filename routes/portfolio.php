@@ -21,10 +21,19 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->controller(portfolioCo
 });
 
 // front-end routes
-//Route::controller(portfolioController::class)->group(function (){
-//    Route::view('/portfolio', 'frontend.pages.portfolio', ['data' => aboutModel::all()->first()])->name('about-full-page');
-//
-//    Route::view('/portfolio_details/{id}', 'frontend.pages.portfolio_details', ['data' => aboutModel::all()->first()])
-//        ->name('about-full-page');
-//
-//});
+Route::controller(portfolioController::class)->group(function (){
+    Route::view('/portfolio', 'frontend.pages.portfolio.portfolio',
+        ['data' => portfolioModel::all()->random(6),
+        'categories' => DB::table('portfolio_category')->get()
+        ])
+        ->name('portfolio-full-page');
+
+    Route::view('/portfolio_details/{id}', 'frontend.pages.portfolio.portfolio_details',
+        ['data' => []])
+        ->name('portfolio-details-page');
+
+    Route::view('/portfolio_details/latest', 'frontend.pages.portfolio.portfolio_details',
+        ['data' => []])
+        ->name('portfolio-details-page-latest');
+
+});
