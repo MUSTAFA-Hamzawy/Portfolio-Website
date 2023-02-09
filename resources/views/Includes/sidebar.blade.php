@@ -77,6 +77,35 @@
 
             </ul>
 
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-item menu">
+                    <a class="nav-link active">
+                        <i class="nav-icon fas fa-copyright"></i>
+                        <p>
+                            Portfolio
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('portfolio-show')}}" class="nav-link ">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Show List</p>
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('portfolio-add')}}" class="nav-link ">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Add</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            </ul>
+
         </nav>
         <!-- /.sidebar-menu -->
     </div>

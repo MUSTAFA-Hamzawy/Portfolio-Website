@@ -23,7 +23,7 @@
     <!-- work-process-area-end -->
 
     <!-- portfolio-area -->
-    @include('frontend.pages.portfolio')
+    @include('frontend.pages.portfolio_home')
     <!-- portfolio-area-end -->
 
     <!-- partner-area -->
