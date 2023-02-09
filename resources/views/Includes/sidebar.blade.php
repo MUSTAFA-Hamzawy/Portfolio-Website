@@ -36,8 +36,10 @@
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu">
-                    <a class="nav-link active">
+
+
+                <li class="nav-item">
+                    <a class="nav-link">
 
                         <p>
                             Home Banner
@@ -57,8 +59,8 @@
             </ul>
 
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu">
-                    <a class="nav-link active">
+                <li class="nav-item">
+                    <a class="nav-link">
 
                         <p>
                             About Info
@@ -78,8 +80,8 @@
             </ul>
 
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu">
-                    <a class="nav-link active">
+                <li class="nav-item">
+                    <a class="nav-link">
 
                         <p>
                             Portfolio
@@ -108,8 +110,8 @@
             </ul>
 
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu">
-                    <a class="nav-link active">
+                <li class="nav-item">
+                    <a class="nav-link">
 
                         <p>
                             Blog
@@ -146,8 +148,8 @@
             </ul>
 
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-item menu">
-                    <a class="nav-link active" href="{{route('contact-show')}}">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('contact-show')}}">
 
                         <p>
                             Show All Messages
