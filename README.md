@@ -75,7 +75,7 @@ To get a local copy up and running follow these simple steps.
 5. Start Running
 ```sh
     npm run dev
-    php artisan migrate ( another terminal)
+    php artisan serve ( another terminal)
 ```
 
 ## Contributing
