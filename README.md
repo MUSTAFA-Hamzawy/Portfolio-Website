@@ -71,8 +71,11 @@ To get a local copy up and running follow these simple steps.
 ```sh
     npm install
 ```
-
-5. Start Running
+5. Generate a key
+```sh
+    php artisan key:generate
+```
+6. Start Running
 ```sh
     npm run dev
     php artisan serve ( another terminal)
