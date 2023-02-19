@@ -314,7 +314,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 DROP TABLE IF EXISTS `blog_posts_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`%` SQL SECURITY DEFINER VIEW `blog_posts_view`  AS SELECT `blog`.`id` AS `post_id`, `blog`.`title` AS `title`, `blog`.`image` AS `image`, `blog`.`post_description` AS `post_description`, `blog_category`.`id` AS `category_id`, `blog_category`.`name` AS `name` FROM (`blog` join `blog_category` on(`blog_category`.`id` = `blog`.`category_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=CURRENT_USER SQL SECURITY DEFINER VIEW `blog_posts_view`  AS SELECT `blog`.`id` AS `post_id`, `blog`.`title` AS `title`, `blog`.`image` AS `image`, `blog`.`post_description` AS `post_description`, `blog_category`.`id` AS `category_id`, `blog_category`.`name` AS `name` FROM (`blog` join `blog_category` on(`blog_category`.`id` = `blog`.`category_id`)) ;
 
 -- --------------------------------------------------------
 
@@ -323,7 +323,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`%` SQL SECURITY DEFINER VIEW `blog_p
 --
 DROP TABLE IF EXISTS `portfolio_projects_view`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`admin`@`%` SQL SECURITY DEFINER VIEW `portfolio_projects_view`  AS SELECT `portfolio`.`id` AS `Portfolio_id`, `portfolio`.`category_id` AS `category_id`, `portfolio`.`title` AS `title`, `portfolio`.`image` AS `image`, `portfolio`.`description` AS `description`, `portfolio_category`.`category_name` AS `category_name`, `portfolio_category`.`id` AS `categoryId` FROM (`portfolio` join `portfolio_category` on(`portfolio_category`.`id` = `portfolio`.`category_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=CURRENT_USER SQL SECURITY DEFINER VIEW `portfolio_projects_view`  AS SELECT `portfolio`.`id` AS `Portfolio_id`, `portfolio`.`category_id` AS `category_id`, `portfolio`.`title` AS `title`, `portfolio`.`image` AS `image`, `portfolio`.`description` AS `description`, `portfolio_category`.`category_name` AS `category_name`, `portfolio_category`.`id` AS `categoryId` FROM (`portfolio` join `portfolio_category` on(`portfolio_category`.`id` = `portfolio`.`category_id`)) ;
 
 --
 -- Constraints for dumped tables
